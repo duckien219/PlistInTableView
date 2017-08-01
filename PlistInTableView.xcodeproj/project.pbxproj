@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		AC06EB761F30215300B22B26 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06EB751F30215300B22B26 /* AppDelegate.swift */; };
-		AC06EB781F30215300B22B26 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06EB771F30215300B22B26 /* ViewController.swift */; };
 		AC06EB7B1F30215300B22B26 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC06EB791F30215300B22B26 /* Main.storyboard */; };
 		AC06EB7D1F30215300B22B26 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AC06EB7C1F30215300B22B26 /* Assets.xcassets */; };
 		AC06EB801F30215300B22B26 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AC06EB7E1F30215300B22B26 /* LaunchScreen.storyboard */; };
+		AC06EB881F302EB200B22B26 /* CountryList.plist in Resources */ = {isa = PBXBuildFile; fileRef = AC06EB871F302EB200B22B26 /* CountryList.plist */; };
+		AC06EB8A1F302EFB00B22B26 /* MainVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06EB891F302EFB00B22B26 /* MainVC.swift */; };
+		AC06EB8C1F302F6D00B22B26 /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AC06EB8B1F302F6D00B22B26 /* DetailVC.swift */; };
+		ACD7346E1F3080890007EC5D /* Quoca.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = ACD7346D1F3080890007EC5D /* Quoca.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AC06EB721F30215300B22B26 /* PlistInTableView.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlistInTableView.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AC06EB751F30215300B22B26 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		AC06EB771F30215300B22B26 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AC06EB7A1F30215300B22B26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		AC06EB7C1F30215300B22B26 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AC06EB7F1F30215300B22B26 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AC06EB811F30215300B22B26 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AC06EB871F302EB200B22B26 /* CountryList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = CountryList.plist; sourceTree = "<group>"; };
+		AC06EB891F302EFB00B22B26 /* MainVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainVC.swift; path = ../MainVC.swift; sourceTree = "<group>"; };
+		AC06EB8B1F302F6D00B22B26 /* DetailVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		ACD7346D1F3080890007EC5D /* Quoca.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Quoca.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,11 +61,14 @@
 			isa = PBXGroup;
 			children = (
 				AC06EB751F30215300B22B26 /* AppDelegate.swift */,
-				AC06EB771F30215300B22B26 /* ViewController.swift */,
+				AC06EB8B1F302F6D00B22B26 /* DetailVC.swift */,
+				AC06EB891F302EFB00B22B26 /* MainVC.swift */,
 				AC06EB791F30215300B22B26 /* Main.storyboard */,
 				AC06EB7C1F30215300B22B26 /* Assets.xcassets */,
 				AC06EB7E1F30215300B22B26 /* LaunchScreen.storyboard */,
+				AC06EB871F302EB200B22B26 /* CountryList.plist */,
 				AC06EB811F30215300B22B26 /* Info.plist */,
+				ACD7346D1F3080890007EC5D /* Quoca.mp3 */,
 			);
 			path = PlistInTableView;
 			sourceTree = "<group>";
@@ -127,6 +136,8 @@
 				AC06EB801F30215300B22B26 /* LaunchScreen.storyboard in Resources */,
 				AC06EB7D1F30215300B22B26 /* Assets.xcassets in Resources */,
 				AC06EB7B1F30215300B22B26 /* Main.storyboard in Resources */,
+				ACD7346E1F3080890007EC5D /* Quoca.mp3 in Resources */,
+				AC06EB881F302EB200B22B26 /* CountryList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,7 +148,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AC06EB781F30215300B22B26 /* ViewController.swift in Sources */,
+				AC06EB8C1F302F6D00B22B26 /* DetailVC.swift in Sources */,
+				AC06EB8A1F302EFB00B22B26 /* MainVC.swift in Sources */,
 				AC06EB761F30215300B22B26 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -265,6 +277,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MJ777Q76VF;
 				INFOPLIST_FILE = PlistInTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KienNguyenD.PlistInTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -278,6 +291,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = MJ777Q76VF;
 				INFOPLIST_FILE = PlistInTableView/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = KienNguyenD.PlistInTableView;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -304,6 +318,7 @@
 				AC06EB861F30215300B22B26 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
