@@ -8,16 +8,19 @@
 
 import UIKit
 
-class MainVC: UITableViewController {
+class MainVC: UITableViewController,ExpandableHeaderViewDelegate {
+    
+    var allArray = [[String: Bool]]()
     
     var arrayOfContinents = [String]()
+    
     var dictOfCountry = NSMutableDictionary()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.loadPlist()
-       
+        
     }
     func loadPlist() {
         
@@ -37,51 +40,105 @@ class MainVC: UITableViewController {
             
             self.dictOfCountry.setValue(countries, forKey: continent)
             
-            print(continent)
-            print(countries)
+            let dic = [continent: false]
+            
+            self.allArray.append(dic)
+            
+//            print(continent)
+//            print(countries)
             
         }
-        print(arrayOfContinents.count)
-
+        
     }
-   
+    
     // MARK: - Table view data source
-
+    
+    func toggleSection(header: ExpandableHeaderView, section: Int) {
+        
+        //        let key_Continent = arrayOfContinents[section]
+        //        print(key_Continent)
+        //        let sectionAll = allArray[section]
+        //        print(sectionAll)
+        //        let boolean = sectionAll[key_Continent]
+        //        print(boolean)
+        
+        allArray[section][arrayOfContinents[section]] = !allArray[section][arrayOfContinents[section]]!
+        
+        tableView.beginUpdates()
+        let sectionTitle = arrayOfContinents[section]
+        let sectionValueCountry = dictOfCountry[sectionTitle] as! NSArray
+        
+        for i in 0 ..< sectionValueCountry.count{
+            
+            tableView.reloadRows(at: [IndexPath(row: i, section: section)], with: .automatic)
+        }
+        tableView.endUpdates()
+    }
+    
+    // Phân biệt các Section
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return 5
+    }
+    
+    // bắt sự kiện khi người dùng Tap vào Section
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let header = ExpandableHeaderView()
+        
+        header.customInit(title: arrayOfContinents[section], section: section, delegate: self)
+        return header
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 40
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        if allArray[indexPath.section][arrayOfContinents[indexPath.section]] == true {
+            
+            return 40
+            
+        } else {
+            return 0
+            
+        }
+    }
+    
+    
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return arrayOfContinents.count
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let sectionTitle = arrayOfContinents[section]
         let sectionObject = dictOfCountry.object(forKey: sectionTitle) as! NSArray
         
         return sectionObject.count
     }
-
-  
+    
+    
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        var cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        if cell == nil {
-            
-            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
-        }
+//        if cell == nil {
+//            
+//            cell = UITableViewCell(style: UITableViewCellStyle.subtitle, reuseIdentifier: "Cell")
+//        }
         
         let sectionTitle = arrayOfContinents[indexPath.section]
         
         let countryInContinent = dictOfCountry[sectionTitle] as! NSArray
         
         let country = countryInContinent[indexPath.row] as! NSDictionary
-
-        cell.textLabel?.text = country.value(forKey: "Country") as! String
         
-
-        // Configure the cell...
-
+        cell.textLabel?.text = country.value(forKey: "Country") as? String
+        
         return cell
     }
-    
     
     
     // Set Title cho Section
@@ -97,10 +154,9 @@ class MainVC: UITableViewController {
         header.textLabel?.textColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
     
+    // Bắt sự kiện khi tap vào các Cell
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-        
+       
         if (segue.identifier == "ShowDetail") {
             
             let detailVC = segue.destination as! DetailVC
@@ -115,55 +171,8 @@ class MainVC: UITableViewController {
             detailVC.dictCountry = countryObject as! NSMutableDictionary
         }
         
-            
-            
-            
-            
-            
-        }
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
     }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-   
     
-        
-        
-        
-        
-    }
-   
+}
+
 
